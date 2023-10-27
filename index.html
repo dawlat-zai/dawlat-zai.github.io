@@ -741,6 +741,7 @@
                         $('#submit_button').removeAttr('disabled');
                         $('#submit_button').text('Submit');
                         form.reset();
+                        grecaptcha.reset();
                     }).catch(error => {
                         $('#form_submit_message').addClass('error');
                         $('#form_submit_message').text('Error submitting the form. Please use other contact method, e.g. phone or whatsapp');
