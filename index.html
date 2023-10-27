@@ -596,11 +596,6 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-12">
-                            <button class="g-recaptcha" data-sitekey="6LcGhdMoAAAAAIjzvht8yGbw1iRJg489LLD-oLgJ" data-callback='onSubmit' data-action='submit'>Submit</button>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-12">
                             <div class="g-recaptcha" data-sitekey="6Le8pNMoAAAAAGKGB1WqGu9NXmOXclNbpxT8MkH4" required></div>
                         </div>
                     </div>
@@ -726,8 +721,6 @@
             form.addEventListener('submit', e => {
                 e.preventDefault();
 
-                $('#submit_button').attr('disabled', true);
-                $('#submit_button').text('Submitting...');
                 $('#form_submit_message').removeClass('error');
                 $('#form_submit_message').removeClass('success');
                 $('#form_submit_message').text('');
@@ -737,6 +730,9 @@
                     $('#form_submit_message').text('Please verify that you are not a robot.');
                     return;
                 }
+
+                $('#submit_button').attr('disabled', true);
+                $('#submit_button').text('Submitting...');
 
                 fetch(scriptURL, { method: 'POST', body: new FormData(form) })
                     .then(response => {
